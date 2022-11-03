@@ -1,0 +1,10 @@
+name: "Cleanup"
+description: "Various cleanup of previous runs for non-ephemeral runners"
+runs:
+  using: "composite"
+  steps:
+    - name: "Cleanup"
+      shell: bash
+      run: |
+        sudo rm -rf /home/ubuntu/.aws || true
+        sudo chown -R $USER:$USER ${{ github.workspace }} || true
